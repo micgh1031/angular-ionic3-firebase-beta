@@ -1,0 +1,187 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-buttons end>
+              <button ion-button icon-only>
+                    <ion-icon name="contact"></ion-icon>
+              </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid ion-fixed style="height: 100vh">
+        <ion-row class="notice-header">
+            <ion-col style="background-color:black;color:white;">
+                <ion-slides pager="true" class="superfill">
+                    <ion-slide class="dashboard">
+                        <h1 class="bold">World Trade Center Bogota</h1>
+                    </ion-slide>
+                    <ion-slide class="alerts">
+                        <h1>Alertas</h1>
+                    </ion-slide>
+                    <ion-slide class="news">
+                        <h1>Noticias</h1>
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="wtc-container">
+            <ion-col col-8 style="background-color:orange;color:white;">
+                <ion-slides pager="true" class="superfill">
+                    <ion-slide class="torreA">
+
+                        <h1 class="light-font-header">TORRE A</h1>
+                        <ion-list>
+                            <ion-item *ngFor="let item of buildings[0].floors" (click)="viewFloorOfffice(1, item.id)">
+                                {{item.name}}
+                            </ion-item>
+                        </ion-list>
+
+                        <ion-row class="building-info">
+                            <ion-col>
+                                Rented Offices
+                                <p>
+                                    {{rentedOffices(1)}}
+                                </p>
+                            </ion-col>
+                            <ion-col>
+                                Occupancy
+                                <p>{{occupancyOffices(1).toFixed(2)}}%</p>
+                            </ion-col>
+                            <ion-col>
+                                Vacant Offices
+                                <p>{{vacantOffices(1)}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-slide>
+                    <ion-slide class="torreB">
+                        <h1 class="light-font-header">TORRE B</h1>
+
+                        <ion-list>
+                            <ion-item *ngFor="let item of buildings[1].floors" (click)="viewFloorOfffice(2, item.id)">
+                                {{item.name}}
+                            </ion-item>
+                        </ion-list>
+
+                        <ion-row class="building-info">
+                            <ion-col>
+                                Rented Offices
+                                <p>
+                                    {{rentedOffices(2)}}
+                                </p>
+                            </ion-col>
+                            <ion-col>
+                                Occupancy
+                                <p>{{occupancyOffices(2).toFixed(2)}}%</p>
+                            </ion-col>
+                            <ion-col>
+                                Vacant Offices
+                                <p>{{vacantOffices(2)}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-slide>
+                    <ion-slide class="torreC">
+                        <h1 class="light-font-header">TORRE C</h1>
+
+                        <ion-list>
+                            <ion-item *ngFor="let item of buildings[2].floors" (click)="viewFloorOfffice(3, item.id)">
+                                {{item.name}}
+                            </ion-item>
+                        </ion-list>
+
+                        <ion-row class="building-info">
+                            <ion-col>
+                                Rented Offices
+                                <p>
+                                    {{rentedOffices(3)}}
+                                </p>
+                            </ion-col>
+                            <ion-col>
+                                Occupancy
+                                <p>{{occupancyOffices(3).toFixed(2)}}%</p>
+                            </ion-col>
+                            <ion-col>
+                                Vacant Offices
+                                <p>{{vacantOffices(3)}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+            <ion-scroll scrollY="true" col-4 style="background-color:rgba(239, 239, 239, 0);color:white;border:0;" class="menu-scroll">
+                <ion-list>
+                    <!-- Sliding item -->
+                    <ion-item-sliding menuToggle>
+                        <ion-item>
+                            <ion-icon name="ios-menu-outline"></ion-icon>
+                        </ion-item>
+                        <ion-item-options>
+
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+                    <!-- Sliding item -->
+                    <ion-item-sliding>
+                        <ion-item (click)="viewBuildingList()">
+                            <h1>TORRES</h1>
+                        </ion-item>
+                        <ion-item-options>
+                            <button ion-button color="primary" (click)="archive()">MANEJAR</button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+
+                    <!-- Sliding item -->
+                    <ion-item-sliding>
+                        <ion-item>
+                            <h1>CONTROL</h1>
+                        </ion-item>
+                        <ion-item-options>
+                            <button ion-button color="primary" (click)="archive()">REPORTES</button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+                    <!-- Sliding item -->
+                    <ion-item-sliding>
+                        <ion-item  (click)="viewNotifications()">
+                            <h1>ALERTAS</h1>
+                        </ion-item>
+                        <ion-item-options>
+                            <button ion-button color="primary" (click)="archive()">AJUSTES</button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+                    <!-- Sliding item -->
+                    <ion-item-sliding>
+                        <ion-item>
+                            <h1> NOTICIAS</h1>
+                        </ion-item>
+                        <ion-item-options>
+                            <button ion-button color="primary" (click)="archive()">CREAR</button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+                    <!-- Sliding item -->
+                    <ion-item-sliding>
+                        <ion-item>
+                            <h1> CHAT</h1>
+                        </ion-item>
+                        <ion-item-options>
+                            <button ion-button color="primary" (click)="archive()">HISTORIA</button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+
+
+                </ion-list>
+            </ion-scroll>
+
+        </ion-row>
+
+
+    </ion-grid>
+</ion-content>

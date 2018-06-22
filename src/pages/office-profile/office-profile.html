@@ -1,0 +1,108 @@
+<!--
+  Generated template for the OfficeProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Office Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/images/working-icon.png">
+            </ion-avatar>
+            <h2>{{office.company}}</h2>
+            <p>{{office.name}}</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Building</ion-label>
+            <ion-input type="text" [(ngModel)]="office.buildingName" [disabled]="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Floor</ion-label>
+            <ion-input type="text" [(ngModel)]="office.floorName" [disabled]="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Area - Mts2</ion-label>
+            <ion-input type="text" [(ngModel)]="office.area" [disabled]="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Garages</ion-label>
+            <ion-input type="text" [(ngModel)]="office.garages" [disabled]="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Co-Pay</ion-label>
+            <ion-input type="text" [(ngModel)]="office.coPay" [disabled]="true"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-toggle [(ngModel)]="office.is_rented"></ion-toggle>
+            <ion-label>
+                RENTED (Yes / No)
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            OWNER INFO
+        </ion-list-header>
+
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/images/user_profile.png">
+            </ion-avatar>
+            <h2>{{owner.first_name + ' ' + owner.last_name}}</h2>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            RENTER INFO
+        </ion-list-header>
+
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/images/user_profile.png">
+            </ion-avatar>
+            <h2>{{renter.first_name + ' ' + renter.last_name}}</h2>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            EMPLOYEES LIST
+        </ion-list-header>
+
+        <ion-item-sliding *ngFor="let item of employees" #slidingItem>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="assets/images/user_profile.png">
+                </ion-avatar>
+                <h2>{{item.first_name + ' ' + item.last_name}}</h2>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="editEmployee(item, slidingItem)">
+                    Edit
+                </button>
+                <button ion-button color="danger">
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <button ion-button block (click)="createEmployee()">Create Employee</button>
+    <button ion-button block (click)="updateOffice()">SUBMIT</button>
+</ion-content>

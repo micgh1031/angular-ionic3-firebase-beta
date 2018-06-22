@@ -1,0 +1,30 @@
+<!--
+  Generated template for the BuildingListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Building List</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngFor="let item of buildings; let i = index;">
+        <ion-item (click)="viewBuilding(item)">
+            <ion-avatar item-start>
+                <img src="assets/images/building.jpg">
+            </ion-avatar>
+            <h2>{{item.name}}</h2>
+            <p>{{item.description}}</p>
+        </ion-item>
+    </ion-card>
+    <button ion-button block (click)="createOffice()">Create Office</button>
+</ion-content>

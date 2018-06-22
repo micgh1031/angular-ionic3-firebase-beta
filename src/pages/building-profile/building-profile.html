@@ -1,0 +1,34 @@
+<!--
+  Generated template for the BuildingProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{building.name}}{{floorId ? ' - ' + floor.name : ''}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>
+            Office List
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let item of offices" #slidingItem>
+            <ion-item (click)="viewOffice(item)">
+                <ion-avatar item-start>
+                    <img src="assets/images/working-icon.png">
+                </ion-avatar>
+                <h2>{{item.company}}</h2>
+                <p>{{item.name}}</p>
+            </ion-item>
+            <ion-item-options>
+                <button ion-button color="primary" (click)="editOffice(item, slidingItem)">Edit</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

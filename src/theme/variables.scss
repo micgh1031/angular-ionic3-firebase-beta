@@ -1,0 +1,179 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+@font-face {
+    font-family: 'Trivial', sans-serif;
+    font-weight: 900;
+    font-style: heavy;
+    src: url('../assets/fonts/Trivial-Heavy.otf');
+}
+@font-face {
+    font-family: 'Trivial', sans-serif;
+    font-weight: 400;
+    font-style: regular;
+    src: url('../assets/fonts/Trivial-Regular.otf');
+}
+@font-face {
+    font-family: 'Trivial', sans-serif;
+    font-weight: 300;
+    font-style: light;
+    src: url('../assets/fonts/Trivial-Light.otf');
+}
+@font-face {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-style: light;
+    src: url('../assets/fonts/SourceSansPro-Light.ttf');
+}
+@font-face {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    src: url('../assets/fonts/SourceSansPro-Regular.ttf');
+}
+@font-face {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 900;
+    font-style: black;
+    src: url('../assets/fonts/SourceSansPro-Black.ttf');
+}
+$font-family-base: "Source Sans Pro";
+body {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 400 !important;
+}
+h1, h2, button, p {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 400 !important;
+}
+.semibold-font {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 900;
+    font-style: black;
+}
+.regular-font {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.light-font {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-style: light;
+}
+.readout {
+    font-family: 'Trivial', sans-serif !important;
+    font-weight: 300;
+    font-style: light;
+}
+.readout-heavy {
+    font-family: 'Trivial', sans-serif !important;
+    font-weight: 900;
+    font-style: heavy;
+}
+.readout-reg {
+    font-family: 'Trivial', sans-serif !important;
+    font-weight: 400;
+    font-style: regular;
+}
+.lrg-input {
+    font-size:2rem !important;
+    color: #2e2e2e !important;
+    opacity: .8;
+}
+.btn-submit span {
+    font-family: 'Trivial', sans-serif !important;
+    font-weight: 900;
+    font-style: heavy;
+}
+ion-label {
+    font-family: 'Trivial', sans-serif !important;
+    font-weight: 400;
+    font-style: regular;
+}
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+@import '../src/assets/fonts/SourceSansPro-Light.ttf';
+@import '../src/assets/fonts/SourceSansPro-Regular.ttf';
+@import '../src/assets/fonts/SourceSansPro-Semibold.ttf';

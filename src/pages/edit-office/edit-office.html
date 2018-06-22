@@ -1,0 +1,109 @@
+<!--
+  Generated template for the EditOfficePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Edit Office</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label>Select Building</ion-label>
+            <ion-select [(ngModel)]="office.buildingId" interface="popover" (ngModelChange)="updateFloors()">
+                <ion-option value="{{item.id}}" *ngFor="let item of buildings">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Select Floor</ion-label>
+            <ion-select interface="popover" [(ngModel)]="office.floorId">
+                <ion-option value="{{item.id}}" *ngFor="let item of floors">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Office #</ion-label>
+            <ion-input type="text" [(ngModel)]="office.name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Company</ion-label>
+            <ion-input type="text" [(ngModel)]="office.company"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Area - Mts 2</ion-label>
+            <ion-input type="text" [(ngModel)]="office.area"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Garages</ion-label>
+            <ion-input type="text" [(ngModel)]="office.garages"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Co-Pay</ion-label>
+            <ion-input type="text" [(ngModel)]="office.coPay"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Owner Info
+        </ion-list-header>
+        <ion-item>
+            <ion-label fixed>First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="owner.first_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="owner.last_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Phone Number</ion-label>
+            <ion-input type="text" [(ngModel)]="owner.phone_number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Email Address</ion-label>
+            <ion-input type="text" [(ngModel)]="owner.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Blood Type</ion-label>
+            <ion-input type="text" [(ngModel)]="owner.blood_type"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Renter Info
+        </ion-list-header>
+        <ion-item>
+            <ion-label fixed>First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="renter.first_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="renter.last_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Phone Number</ion-label>
+            <ion-input type="text" [(ngModel)]="renter.phone_number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Email Address</ion-label>
+            <ion-input type="text" [(ngModel)]="renter.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Password</ion-label>
+            <ion-input type="text" [(ngModel)]="renter.password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Blood Type</ion-label>
+            <ion-input type="text" [(ngModel)]="renter.blood_type"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block (click)="updateOffice()">Submit</button>
+</ion-content>

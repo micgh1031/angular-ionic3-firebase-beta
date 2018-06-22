@@ -1,0 +1,92 @@
+page-maintenance-tracker {
+    .StepProgress {
+        position: relative;
+        padding-left: 45px;
+        list-style: none;
+
+        ion-list {
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+        }
+
+        &::before {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 10px;
+            height: 100%;
+            border-left: 2px solid #CCC;
+        }
+
+        &-item {
+            position: relative;
+            counter-increment: list;
+
+            &:not(:last-child) {
+                padding-bottom: 20px;
+            }
+
+            &::before {
+                display: inline-block;
+                content: '';
+                position: absolute;
+                left: -30px;
+                height: 100%;
+                width: 10px;
+            }
+
+            &::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: -37px;
+                width: 12px;
+                height: 12px;
+                border: 2px solid #CCC;
+                border-radius: 50%;
+                background-color: #FFF;
+            }
+
+            &.is-done {
+                &::before {
+                    border-left: 2px solid green;
+                }
+                &::after {
+                    content: "✔";
+                    font-size: 10px;
+                    color: #FFF;
+                    text-align: center;
+                    border: 2px solid green;
+                    background-color: green;
+                }
+            }
+
+            &.current {
+                &::before {
+                    border-left: 2px solid green;
+                }
+
+                &::after {
+                    content: counter(list);
+                    padding-top: 1px;
+                    width: 19px;
+                    height: 18px;
+                    top: -4px;
+                    left: -40px;
+                    font-size: 14px;
+                    text-align: center;
+                    color: green;
+                    border: 2px solid green;
+                    background-color: white;
+                }
+            }
+        }
+
+        strong {
+            display: block;
+        }
+    }
+}

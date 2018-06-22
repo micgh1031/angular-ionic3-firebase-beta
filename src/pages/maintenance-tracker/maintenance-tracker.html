@@ -1,0 +1,387 @@
+<!--
+  Generated template for the MaintenanceTrackerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Maintenance Tracker</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-list-header>
+            Active Step
+        </ion-list-header>
+    </ion-list>
+
+    <div class="wrapper">
+        <ul class="StepProgress">
+            <li class="StepProgress-item" [ngClass]="{'is-done': request.step > 1, 'current': request.step == 1}">
+                <strong>Step 1</strong>
+                <ion-list *ngIf="authUser.level == 4 && request.step == 1">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle checked="true" disabled="true"></ion-toggle>
+                        <ion-label>
+                            Sent
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+                <ion-list *ngIf="(authUser.level == 7 || authUser.level == 8)  && request.step == 1">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="showQuote"></ion-toggle>
+                        <ion-label>
+                            Attach Quote
+                        </ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="showQuote">
+                        <ion-label>Request</ion-label>
+                        <div item-content style="width: 70%;">
+                            <textarea placeholder="You comments" style="width: 100%; height: 80px;" [(ngModel)]="quote"></textarea>
+                        </div>
+                    </ion-item>
+                </ion-list>
+
+                <button ion-button block (click)="goToStep2()"
+                        *ngIf="(request.step == 1) && (authUser.level == 7 || authUser.level == 8)">
+                    Submit Quote
+                </button>
+            </li>
+            <li class="StepProgress-item" [ngClass]="{'is-done': request.step > 2, 'current': request.step == 2}">
+                <strong>Step 2</strong>
+                <ion-list *ngIf="authUser.level == 4 && request.step == 2">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="quoteAccept"></ion-toggle>
+                        <ion-label>
+                            Accept Quote
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+
+                <ion-list *ngIf="(authUser.level == 7 || authUser.level == 8)  && request.step == 2">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="quoteAccept" disabled="true"></ion-toggle>
+                        <ion-label>
+                            Quote Accepted
+                        </ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="quoteAccept">
+                        <ion-toggle [(ngModel)]="showSchedule"></ion-toggle>
+                        <ion-label>
+                            Schedule Appointment
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+
+                <ion-list *ngIf="showSchedule && request.step == 2">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Technician Appointment
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Date</ion-label>
+                        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="technician_date"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Time</ion-label>
+                        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="technician_time"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Technician Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="technician_name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Company Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="technician_company"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Telephone</ion-label>
+                        <ion-input type="text" [(ngModel)]="technician_phone"></ion-input>
+                    </ion-item>
+                </ion-list>
+
+                <button ion-button block (click)="goToStep3()"
+                        *ngIf="request.step == 2 && (((authUser.level == 7 || authUser.level == 8) && showSchedule) || (authUser.level == 4 && quoteAccept))">
+                    Set Appointment
+                </button>
+            </li>
+            <li class="StepProgress-item" [ngClass]="{'is-done': request.step > 3, 'current': request.step == 3}">
+                <strong>Step 3</strong>
+
+                <ion-list *ngIf="authUser.level == 4 && request.step == 3">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Technician Date</ion-label>
+                        <ion-input type="text" [(ngModel)]="requestDetail['2'].technician_date" [readonly]="true"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Technician Time</ion-label>
+                        <ion-input type="text" [(ngModel)]="requestDetail['2'].technician_time" [readonly]="true"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Technician Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="requestDetail['2'].technician_name" [readonly]="true"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Company Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="requestDetail['2'].technician_company" [readonly]="true"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label fixed>Telephone</ion-label>
+                        <ion-input type="text" [(ngModel)]="requestDetail['2'].technician_phone" [readonly]="true"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="scheduleAccept"></ion-toggle>
+                        <ion-label>
+                            Accept Schedule
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+
+                <ion-list *ngIf="(authUser.level == 7 || authUser.level == 8)  && request.step == 3">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="scheduleAccept" disabled="true"></ion-toggle>
+                        <ion-label>
+                            Schedule Accepted
+                        </ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="scheduleAccept">
+                        <ion-label>Job Complete</ion-label>
+                        <ion-checkbox [(ngModel)]="is_completed"></ion-checkbox>
+                    </ion-item>
+                </ion-list>
+
+                <button ion-button block (click)="goToStep4()"
+                        *ngIf="request.step == 3 && (((authUser.level == 7 || authUser.level == 8) && is_completed) || (authUser.level == 4 && scheduleAccept))">
+                    Set Appointment
+                </button>
+            </li>
+            <li class="StepProgress-item" [ngClass]="{'is-done': request.step > 4, 'current': request.step == 4}">
+                <strong>Step 4</strong>
+
+                <ion-list *ngIf="authUser.level == 4 && request.step == 4">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-toggle [(ngModel)]="requestDetail['3'].is_completed"></ion-toggle>
+                        <ion-label>
+                            Job Complete
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+
+                <button ion-button block icon-left *ngIf="request.step == 4 && (authUser.level == 4)" (click)="payInvoice()">
+                    <ion-icon ios="ios-card" md="md-card"></ion-icon>
+                    Pay Invoice
+                </button>
+
+                <ion-list *ngIf="(authUser.level == 7 || authUser.level == 8)  && request.step == 4">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Invoice
+                        <ion-note item-end>Pending</ion-note>
+                    </ion-item>
+                </ion-list>
+
+                <ion-card *ngIf="requestDetail[3].status && (authUser.level == 7 || authUser.level == 8)  && request.step == 4">
+                    <img src="{{requestDetail[3].invoice}}"/>
+                </ion-card>
+
+                <button ion-button block icon-left *ngIf="request.step == 4 && ((authUser.level == 7 || authUser.level == 8) && is_paid)" (click)="paidInvoice()">
+                    <ion-icon ios="ios-card" md="md-card"></ion-icon>
+                    Mark Invoice Paid
+                </button>
+            </li>
+            <li class="StepProgress-item" [ngClass]="{'is-done': request.step > 5, 'current': request.step == 5}">
+                <strong>Step 5</strong>
+
+                <ion-list *ngIf="authUser.level == 4 && request.step == 5">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Job Paid
+                        <ion-note item-end (click)="viewInvoice()">View</ion-note>
+                    </ion-item>
+                </ion-list>
+
+                <ion-card *ngIf="authUser.level == 4 && request.step == 5 && showInvoice">
+                    <img src="{{requestDetail[3].invoice}}"/>
+                </ion-card>
+
+                <ion-list *ngIf="authUser.level == 4 && request.step == 5">
+                    <ion-item>
+                        <ion-label>Please rate work</ion-label>
+                        <ion-select [(ngModel)]="rate">
+                            <ion-option value="5">5 stars</ion-option>
+                            <ion-option value="4">4 stars</ion-option>
+                            <ion-option value="3">3 stars</ion-option>
+                            <ion-option value="2">2 stars</ion-option>
+                            <ion-option value="1">1 stars</ion-option>
+                            <ion-option value="0">0 stars</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Comments</ion-label>
+                        <div item-content style="width: 70%;">
+                            <textarea placeholder="You comments" style="width: 100%; height: 80px;" [(ngModel)]="comment"></textarea>
+                        </div>
+                    </ion-item>
+                </ion-list>
+
+                <button ion-button block icon-left *ngIf="request.step == 5 && (authUser.level == 4)" (click)="leaveReview()">
+                    <ion-icon ios="ios-star" md="md-star"></ion-icon>
+                    Leave Review
+                </button>
+
+
+                <ion-list *ngIf="(authUser.level == 7 || authUser.level == 8)  && request.step == 5">
+                    <ion-item>
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Request Date
+                        <ion-note item-end>{{request.created_at}}</ion-note>
+                    </ion-item>
+                    <ion-item>
+                        {{office.buildingName}} | {{office.floorName}} | {{office.name}}
+                    </ion-item>
+                    <ion-item *ngIf="requestDetail[5].status == 0">
+                        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                        Complete
+                        <ion-note item-end>Pending Review</ion-note>
+                    </ion-item>
+                    <ion-item *ngIf="requestDetail[5].status == 1">
+                        Rate
+                        <ion-note item-end>{{requestDetail[5].star}} stars</ion-note>
+                    </ion-item>
+                    <ion-item *ngIf="requestDetail[5].status == 1">
+                        {{requestDetail[5].comment}}
+                    </ion-item>
+                </ion-list>
+
+                <button ion-button block icon-left *ngIf="request.step == 5 && ((authUser.level == 7 || authUser.level == 8) && is_paid)" (click)="archiveRequest()">
+                    <ion-icon ios="ios-cloud-download" md="md-cloud-download"></ion-icon>
+                    Archive MAINT. REQ.
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <ion-list style="margin-top: 20px;">
+        <ion-list-header>
+            Maintenance Request
+        </ion-list-header>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/images/working-icon.png">
+            </ion-avatar>
+            <h2>{{office.company}}</h2>
+            <p>{{office.name}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+            Request Date
+            <ion-note item-end *ngIf="authUser.level != 4">{{request.created_at}}</ion-note>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            Requested By
+        </ion-list-header>
+        <ion-item>
+            <ion-icon ios="ios-person" md="md-person"></ion-icon>
+            {{user.first_name + ' ' + user.last_name}}
+        </ion-item>
+        <ion-item>
+            <ion-toggle [(ngModel)]="viewRequest"></ion-toggle>
+            <ion-label>
+                View Request Details
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-card *ngIf="viewRequest">
+        <ion-card-content>
+            <p>{{request.comment}}</p>
+        </ion-card-content>
+
+        <ion-slides pager="true" *ngIf="request.photos && request.photos.length > 0">
+            <ion-slide *ngFor="let item of request.photos;">
+                <img src="{{item}}"/>
+            </ion-slide>
+        </ion-slides>
+    </ion-card>
+</ion-content>

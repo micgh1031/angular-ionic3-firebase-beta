@@ -1,0 +1,180 @@
+page-home {
+    .slide-zoom {
+        height:100%;
+    }
+    ion-list.list.list-md {
+        height:100%;
+    }
+    ion-card {
+        margin: 0px !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-image: url('../../assets/img/wtcb.jpg') !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 50% !important;
+    }
+    SCROLL-CONTENT {
+	   overflow-y: auto !important;
+    }
+    CODE {
+        background: #EFEFEF;
+    }
+    ion-content {
+        background: #151515;
+    }
+    ion-grid {
+        height: calc(100vh - 55px);
+        overflow:hidden !important;
+    }
+    .notice-header {
+        height:35vh !important;
+    }
+    .wtc-container {
+        height:65vh !important;
+    }
+    .superfill {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+    }
+    .dashboard {
+        background-image: url('../assets/img/wtcb.jpg');
+        background-size: cover;
+        background-position:  center center;
+	    background-repeat: no-repeat;
+    }
+    .alerts {
+        background-image: url('../assets/img/torreA.jpg');
+        background-size: cover;
+        background-position:  center center;
+	    background-repeat: no-repeat;
+    }
+    .news {
+        background-image: url('../assets/img/torreA.jpg');
+        background-size: cover;
+        background-position:  center center;
+	    background-repeat: no-repeat;
+    }
+    .torreA {
+        background-image: url('../assets/img/torreA.jpg');
+        background-size: cover;
+        background-position:  center center;
+	    background-repeat: no-repeat;
+    }
+    .torreB {
+        background-image: url('../assets/img/torreB.jpg');
+        background-size: cover;
+        background-position:  center center;
+	    background-repeat: no-repeat;
+    }
+    .torreC {
+        background-image: url('../assets/img/torreC.jpg');
+        background-size: cover;
+        background-position:  center center;
+	    background-repeat: no-repeat;
+    }
+    .light-font-header {
+        font-family: 'Trivial', sans-serif !important;
+        font-weight: 900 !important;
+        font-style: heavy !important;
+    }
+    h1 {
+        .bold {
+        font-family: 'Trivial', sans-serif !important;
+        font-weight: 900 !important;
+        font-style: heavy !important;
+        }
+    }
+    .toolbar-title-md {
+        font-family: 'Trivial', sans-serif !important;
+        font-weight: 900 !important;
+        font-style: heavy !important;
+    }
+    .grid {
+        padding:0 !important;
+    }
+    div.input-wrapper {
+        text-align:center !important;
+        padding:20px 0 !important;
+    }
+    .scroll{
+        height: 100% !important;
+    }
+    .item-md h1 {
+        font-family: 'Source Sans Pro', sans-serif;
+        padding:27px 0px;
+    }
+    ion-icon {
+        font-size: 5rem;
+        padding:18px 0px;
+    }
+    .slide-zoom {
+        ion-list {
+            height: 300px;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            width: 80%;
+            margin: auto;
+            background: none;
+
+            ion-item {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 300;
+                font-size: 3rem;
+                color:rgb(85, 133, 168);
+                background-color: rgba(248, 253, 255, 0.89);
+                -webkit-box-shadow: inset 0px 0px 25px -0px rgba(232, 232, 232, 0.35);
+                -moz-box-shadow: inset 0px 0px 25px -0px rgba(232, 232, 232, 0.35);
+                box-shadow: inset 0px 0px 25px -0px rgba(192, 211, 227, 0.35);
+                border:none !important;
+            }
+        }
+    }
+    .building-info {
+        background: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        bottom: 43px;
+        width: 100%;
+        color: #6a6a6a;
+        font-size: 10px;
+        height:18%;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 900;
+        font-style: black;
+        text-transform: uppercase;
+
+        p {
+            color: #59a0e8;
+            font-size: 17px;
+            margin: 0px;
+            font-family: 'Trivial', sans-serif !important;
+            font-weight: 900 !important;
+            font-style: heavy !important;
+        }
+    }
+    .menu-scroll {
+        background: #ffffff;
+
+        ion-item-sliding {
+            background: #ffffff;
+
+            ion-item {
+                background: #ffffff;
+                color: #acacac;
+                padding-left: 0px;
+
+                .item-inner {
+                    padding-right: 0px !important;
+                }
+
+                h1 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,3 @@
 # angular-ionic3-firebase
 
-Angular 4, Ionic 3, Firebase
+This is angular 4 + ionic 3 project that use firebase db.

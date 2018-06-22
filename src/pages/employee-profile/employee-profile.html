@@ -1,0 +1,72 @@
+<!--
+  Generated template for the EmployeeProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Employee Profile</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="employee.first_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="employee.last_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Password</ion-label>
+            <ion-input type="text" [(ngModel)]="employee.password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Phone Number</ion-label>
+            <ion-input type="text" [(ngModel)]="employee.phone_number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Email Address</ion-label>
+            <ion-input type="text" [(ngModel)]="employee.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>ID #</ion-label>
+            <ion-input type="text" [(ngModel)]="employeeId" [disabled]="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Blood Type</ion-label>
+            <ion-input type="text" [(ngModel)]="employee.blood_type"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="employee.level == 4">
+        <ion-list-header>
+            ACCESS OPTIONS
+        </ion-list-header>
+        <ion-item>
+            <ion-label>CREATE EMPLOYEES</ion-label>
+            <ion-checkbox [(ngModel)]="employee.can_create_employee"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>PRE-AUTHORIZE VISITORS</ion-label>
+            <ion-checkbox [(ngModel)]="employee.can_pre_authorize"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>MAINTENANCE VIEW</ion-label>
+            <ion-checkbox [(ngModel)]="employee.can_maintenance"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>MAIL VIEW</ion-label>
+            <ion-checkbox [(ngModel)]="employee.can_mail_view"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block (click)="updateEmployee()">SUBMIT</button>
+</ion-content>
